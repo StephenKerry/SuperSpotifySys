@@ -18,7 +18,7 @@ fun mainMenu(): Int {
          > |   *0) Exit                      |
          > ---------------------------------- 
          >""".trimMargin(">"))
-    return readNextInt(" > ==>>")
+    return readNextInt(" > ==>>") }
     fun runMenu() {
         do {
             val option = mainMenu()
@@ -33,3 +33,25 @@ fun mainMenu(): Int {
             }
         } while (true)
     }
+fun seeStephenSong(){
+    println("You chose Add Note")
+}
+
+fun searchSong(){
+    println("You chose List Notes")
+}
+
+fun addSong(){
+    println("You chose Update Note")
+}
+
+fun deleteSong(){
+    println("You chose Delete Note")
+}
+fun updateSong(){
+    println("You chose Delete Note")
+}
+fun exitApp(){
+    println("System shutting down...")
+    exit(0)
+}
