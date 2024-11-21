@@ -25,9 +25,9 @@ fun mainMenu(): Int {
             when (option) {
                 1 -> seeStephenSong()
                 2 -> addSong ()
-                3 -> updateNote()
-                4 -> deleteNote()
-                5 -> archiveNote()
+                3 -> searchSong()
+                4 -> updateSong()
+                5 -> deleteSong()
                 0 -> exitApp()
                 else -> println("Invalid option entered: $option")
             }
