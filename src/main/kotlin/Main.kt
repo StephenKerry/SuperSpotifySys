@@ -51,7 +51,7 @@ fun seeStephenSong(){
 }
 
 fun searchSong(){
-    println("You chose List Notes")
+    println("You chose Song search")
 }
 
 fun addSong(){
@@ -73,10 +73,24 @@ fun addSong(){
 }
 
 fun deleteSong(){
-    println("You chose Delete Note")
+    println("You chose Delete a song")
+    //logger.info { "deleteSong() function invoked" }
+    listSong()
+    if (SongAPI.numberOfNotes() > 0) {
+        //only ask the user to choose the note to delete if notes exist
+        val indexToDelete = readNextInt("Enter the index of the song to delete: ")
+        //pass the index of the note to NoteAPI for deleting and check for success.
+        val songToDelete = noteAPI.deleteSong(indexToDelete)
+        if (songToDelete != null) {
+            println("Song has been deleted successfully! Deleted song: ${songToDelete.songTitle}")
+        } else {
+            println("Delete was NOT Successful")
+        }
+    }
+}
 }
 fun updateSong(){
-    println("You chose Delete Note")
+    println("You chose Update a song")
 }
 fun exitApp(){
     println("System shutting down...")
