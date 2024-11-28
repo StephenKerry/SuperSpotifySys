@@ -1,15 +1,13 @@
-import controllers.NoteAPI
+import controllers.SongAPI
 import io.github.oshai.kotlinlogging.KotlinLogging
-import models.Note
 import persistence.JSONSerializer
-import persistence.XMLSerializer
 import utils.*
 import java.io.File
 import java.lang.System.exit
 
 private val logger = KotlinLogging.logger {}
 //private val noteAPI = NoteAPI(XMLSerializer(File("song.xml")))
-private val noteAPI = NoteAPI(JSONSerializer(File("song.json")))
+private val SongAPI = SongAPI(JSONSerializer(File("song.json")))
 fun main() {
     runMenu()
 }
@@ -47,21 +45,34 @@ fun mainMenu(): Int {
         } while (true)
     }
 fun seeStephenSong(){
-    println("You chose Add Note")
+    println("You chose to see Stephen's top 5 favourite songs")
+    println("")
 }
 
 fun searchSong(){
     println("You chose Song search")
+    val searchedSong = getSongbyTitle()
+    if (searchedSong == null)
+        println("No employee found")
+    else
+        println(searchedSong)
 }
+}
+internal fun getSongbyTitle(): searchedSong? {
+    print("Enter the song title to search by: ")
+    val songTitle = readLine()
+    return song.findOne(songTitle)
+}
+
 
 fun addSong(){
     val songTitle = readNextLine("Please a title for your Song: ")
     val songArtist = readNextLine("Who is the Artist for this song?")
-    val dateOfRelease = readValidPriority("Enter the date of Release for this song: ")
-    val songGenre = readValidGenre("Enter a Genre for the Song from ${Genres}: ")
+    val dateOfRelease = readValidInt("Enter the date of Release for this song: ")
+    val songGenre = readNextLine("Enter a Genre for the Song from ${Genres}: ")
     val songViewCount = readNextInt("Enter the view/Stream Count for this song: ")
 
-    val isAdded = songAPI.add(Song(songTitle, songArtist, dateOfRelease, songGenre, songViewCount false))
+    val isAdded = SongAPI.add(Song(songTitle, songArtist, dateOfRelease, songGenre, songViewCount false))
 
     if (isAdded) {
         println("Added Successfully")
