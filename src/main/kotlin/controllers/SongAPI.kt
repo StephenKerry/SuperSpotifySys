@@ -1,6 +1,7 @@
 package controllers
 
 import models.Note
+import models.Song
 
 class SongAPI {
     private var song = ArrayList<Song>()
@@ -23,13 +24,13 @@ fun numberOfNotes(): Int {
     return notes.size
 }
 
-fun findNote(index: Int): Note? {
-    return if (isValidListIndex(index, Notes)) {
-        notes[index]
+fun findNote(index: String): Song? {
+    return if (isValidListTitle(index, Song)) {
+        Song[index]
     } else null
 }
 
 //utility method to determine if an index is valid in a list.
-fun isValidListIndex(index: Int, list: List<Any>): Boolean {
-    return (index >= 0 && index < list.size)
+fun isValidListTitle(Title: String, list: List<Any>): Boolean {
+    return (Title >= 0 && Title < list.size)
 }

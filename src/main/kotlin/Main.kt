@@ -109,6 +109,29 @@ fun deleteSong(){
 }
 fun updateSong(){
     println("You chose Update a song")
+        //logger.info { "updateSong() function invoked" }
+        listSong()
+        if (SongAPI.numberOfsongs() > 0) {
+            //only ask the user to choose the note if notes exist
+            val indexToUpdate = readNextInt("Enter the index of the note to update: ")
+            if (SongAPI.isValidIndex(indexToUpdate)) {
+                val songTitle = readNextLine("Please a title for your Song: ")
+                val songArtist = readNextLine("Who is the Artist for this song?")
+                val dateOfRelease = readValidInt("Enter the date of Release for this song: ")
+                val songGenre = readNextLine("Enter a Genre for the Song from ${Genres}: ")
+                val songViewCount = readNextInt("Enter the view/Stream Count for this song: ")
+
+                //pass the index of the note and the new note details to NoteAPI for updating and check for success.
+                if (SongAPI.updateNote(indexToUpdate, Song(songTitle, songArtist, dateOfRelease, songGenre, songViewCount  false)){
+                    println("Update Successful")
+                } else {
+                    println("Update Failed")
+                }
+            } else {
+                println("There are no songs for this index number")
+            }
+        }
+    }
 }
 fun exitApp(){
     println("System shutting down...")
