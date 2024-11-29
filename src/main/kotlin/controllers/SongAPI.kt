@@ -1,34 +1,32 @@
 package controllers
 
-import models.Note
 import models.Song
+
 
 class SongAPI {
     private var song = ArrayList<Song>()
-    fun add(note: Note): Boolean {
-        return song.add(note)
+    fun add(newSong: Song): Boolean {
+        return song.add(newSong)
     }
-    fun listAllNotes(): String {
-        return if (notes.isEmpty()) {
-            "No notes stored"
+    fun listAllsongs(): String {
+        return if (song.isEmpty()) {
+            "No songs stored"
         } else {
-            var listOfNotes = ""
-            for (i in notes.indices) {
-                listOfNotes += "${i}: ${notes[i]} \n"
+            var listOfSongs = ""
+            for (i in song.indices) {
+                listOfSongs += "${i}: ${song[i]} \n"
             }
-            listOfNotes
+            listOfSongs
         }
     }
 }
-fun numberOfNotes(): Int {
-    return notes.size
+fun numberOfSongs(): Int {
+    return song.size
 }
 
-fun findNote(index: String): Song? {
-    return if (isValidListTitle(index, Song)) {
-        Song[index]
-    } else null
-}
+
+
+
 
 //utility method to determine if an index is valid in a list.
 fun isValidListTitle(Title: String, list: List<Any>): Boolean {

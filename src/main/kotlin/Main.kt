@@ -7,7 +7,7 @@ import java.lang.System.exit
 
 private val logger = KotlinLogging.logger {}
 //private val noteAPI = NoteAPI(XMLSerializer(File("song.xml")))
-private val SongAPI = SongAPI(JSONSerializer(File("song.json")))
+private val songAPI = SongAPI(JSONSerializer(File("song.json")))
 fun main() {
     runMenu()
 }
@@ -44,6 +44,12 @@ fun mainMenu(): Int {
             }
         } while (true)
     }
+
+
+fun listSong() {
+    println(songAPI.listAllsongs())
+}
+
 fun seeStephenSong() {
     println("You chose to see Stephen's top 5 favorite songs")
     println("""
@@ -56,28 +62,31 @@ fun seeStephenSong() {
 }
 
 
-fun searchSong(){
+fun searchSong() {
     println("You chose Song search")
     val searchedSong = getSongbyTitle()
     if (searchedSong == null)
         println("No employee found")
-    else
-        println(searchedSong)
-}
-}
-internal fun getSongbyTitle(): searchedSong? {
+} else = println("Song found!: $searchedSong")
+
+internal fun getSongbyTitle(): Song? {
     print("Enter the song title to search by: ")
-    val songTitle = readLine()
+    val songTitle = readlnOrNull()
     return song.findOne(songTitle)
 }
 
 
 fun addSong(){
-    val songTitle = readNextLine("Please a title for your Song: ")
-    val songArtist = readNextLine("Who is the Artist for this song?")
-    val dateOfRelease = readValidInt("Enter the date of Release for this song: ")
-    val songGenre = readNextLine("Enter a Genre for the Song from ${Genres}: ")
-    val songViewCount = readNextInt("Enter the view/Stream Count for this song: ")
+    print("Please a title for your Song: ")
+        val songTitle = readLine().toString()
+  print("Who is the Artist for this song?")
+    val songArtist = readLine().toString()
+   ("Enter the date of Release for this song: ")
+    val dateOfRelease = readLine().toInt()
+   ("Enter a Genre for the Song : ")
+    val songGenre = readLine().toString()
+    ("Enter the view/Stream Count for this song: ")
+    val songViewCount = readLine().toInt()
 
     val isAdded = SongAPI.add(Song(songTitle, songArtist, dateOfRelease, songGenre, songViewCount false))
 
