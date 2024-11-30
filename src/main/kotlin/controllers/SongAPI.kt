@@ -21,7 +21,7 @@ class SongAPI {
     }
 }
 fun numberOfSongs(): Int {
-    return song.size
+    return Song.size
 }
 
 

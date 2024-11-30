@@ -1,13 +1,14 @@
 import controllers.SongAPI
 import io.github.oshai.kotlinlogging.KotlinLogging
+import models.Song
 import persistence.JSONSerializer
 import utils.*
 import java.io.File
 import java.lang.System.exit
 
 private val logger = KotlinLogging.logger {}
-//private val noteAPI = NoteAPI(XMLSerializer(File("song.xml")))
-private val songAPI = SongAPI(JSONSerializer(File("song.json")))
+private val SongAPI = SongAPI()
+
 fun main() {
     runMenu()
 }
@@ -79,16 +80,16 @@ internal fun getSongbyTitle(): Song? {
 fun addSong(){
     print("Please a title for your Song: ")
         val songTitle = readLine().toString()
-  print("Who is the Artist for this song?")
-    val songArtist = readLine().toString()
-   ("Enter the date of Release for this song: ")
-    val dateOfRelease = readLine().toInt()
-   ("Enter a Genre for the Song : ")
-    val songGenre = readLine().toString()
     ("Enter the view/Stream Count for this song: ")
-    val songViewCount = readLine().toInt()
+    val songViewCount = readLine()?.toInt()
+    ("Enter a Genre for the Song : ")
+    val songGenre = readLine().toString()
+    val yearOfRelease = readLine()?.toInt()
+    ("Enter a Genre for the Song : ")
+    print("Who is the Artist for this song?")
+    val songArtist = readLine().toString()
 
-    val isAdded = SongAPI.add(Song(songTitle, songArtist, dateOfRelease, songGenre, songViewCount false))
+    val isAdded = SongAPI.add(Song(songTitle, songViewCount, songGenre, yearOfRelease, songArtist, false))
 
     if (isAdded) {
         println("Added Successfully")
@@ -97,7 +98,7 @@ fun addSong(){
     }
 }
 
-}
+
 
 fun deleteSong(){
     println("You chose Delete a song")
@@ -115,7 +116,7 @@ fun deleteSong(){
         }
     }
 }
-}
+
 fun updateSong(){
     println("You chose Update a song")
         //logger.info { "updateSong() function invoked" }
@@ -124,16 +125,22 @@ fun updateSong(){
             //only ask the user to choose the note if notes exist
             val indexToUpdate = readNextInt("Enter the index of the note to update: ")
             if (SongAPI.isValidIndex(indexToUpdate)) {
-                val songTitle = readNextLine("Please a title for your Song: ")
-                val songArtist = readNextLine("Who is the Artist for this song?")
-                val dateOfRelease = readValidInt("Enter the date of Release for this song: ")
-                val songGenre = readNextLine("Enter a Genre for the Song from ${Genres}: ")
-                val songViewCount = readNextInt("Enter the view/Stream Count for this song: ")
+                print("Please a title for your Song: ")
+                val songTitle = readLine().toString()
+                ("Enter the view/Stream Count for this song: ")
+                val songViewCount = readLine()?.toInt()
+                ("Enter a Genre for the Song : ")
+                val songGenre = readLine().toString()
+                val yearOfRelease = readLine()?.toInt()
+                ("Enter a Genre for the Song : ")
+                print("Who is the Artist for this song?")
+                val songArtist = readLine().toString()
+
 
                 //pass the index of the note and the new note details to NoteAPI for updating and check for success.
-                if (SongAPI.updateNote(indexToUpdate, Song(songTitle, songArtist, dateOfRelease, songGenre, songViewCount  false)){
-                    println("Update Successful")
-                } else {
+                if (SongAPI.updateNote(indexToUpdate, Song(songTitle, songArtist, yearOfRelease, songGenre, songViewCount  false)) {
+                        println("Update Successful")
+                    } else {
                     println("Update Failed")
                 }
             } else {
@@ -141,7 +148,7 @@ fun updateSong(){
             }
         }
     }
-}
+
 fun exitApp(){
     println("System shutting down...")
     exit(0)
