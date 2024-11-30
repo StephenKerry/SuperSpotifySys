@@ -48,7 +48,7 @@ fun mainMenu(): Int {
 
 
 fun listSong() {
-    println(songAPI.listAllsongs())
+    println(SongAPI.listAllsongs())
 }
 
 fun seeStephenSong() {
