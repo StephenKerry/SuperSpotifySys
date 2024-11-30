@@ -5,5 +5,6 @@ data class Song(
     val songViewCount: Int,
     val songGenre: String,
     val yearOfRelease: Int,
-    val songArtist: String){
+    val songArtist: String,
+    val isSongArchived :Boolean){
 }
