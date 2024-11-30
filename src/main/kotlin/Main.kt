@@ -1,8 +1,9 @@
 import controllers.SongAPI
 import io.github.oshai.kotlinlogging.KotlinLogging
 import models.Song
-import utils.*
 import java.lang.System.exit
+import utils.readNextInt
+import utils.readNextLine
 
 private val logger = KotlinLogging.logger {}
 private val SongAPI = SongAPI()
@@ -82,8 +83,8 @@ fun addSong(){
     val songViewCount = readLine()?.toInt()
     ("Enter a Genre for the Song: ")
     val songGenre = readLine().toString()
+    ("Enter a year of Release for the Song: ")
     val yearOfRelease = readLine()?.toInt()
-    ("Enter a Genre for the Song : ")
     print("Who is the Artist for this song?")
     val songArtist = readLine().toString()
 
