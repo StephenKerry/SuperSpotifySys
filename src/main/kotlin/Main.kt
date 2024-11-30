@@ -1,9 +1,7 @@
 import controllers.SongAPI
 import io.github.oshai.kotlinlogging.KotlinLogging
 import models.Song
-import persistence.JSONSerializer
 import utils.*
-import java.io.File
 import java.lang.System.exit
 
 private val logger = KotlinLogging.logger {}
@@ -73,7 +71,7 @@ fun searchSong() {
 internal fun getSongbyTitle(): Song? {
     print("Enter the song title to search by: ")
     val songTitle = readlnOrNull()
-    return song.findOne(songTitle)
+    return Song.findOne(songTitle)
 }
 
 
@@ -82,7 +80,7 @@ fun addSong(){
         val songTitle = readLine().toString()
     ("Enter the view/Stream Count for this song: ")
     val songViewCount = readLine()?.toInt()
-    ("Enter a Genre for the Song : ")
+    ("Enter a Genre for the Song: ")
     val songGenre = readLine().toString()
     val yearOfRelease = readLine()?.toInt()
     ("Enter a Genre for the Song : ")
