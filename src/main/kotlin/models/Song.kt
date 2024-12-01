@@ -1,10 +1,10 @@
 package models
 
 data class Song(
-    val songTitle: String,
-    val songViewCount: Int?,
-    val songGenre: String,
-    val yearOfRelease: Int?,
-    val songArtist: String,
-    val isSongArchived:Boolean){
+    var songTitle: String,
+    var songViewCount: Int?,
+    var songGenre: String,
+    var yearOfRelease: Int?,
+    var songArtist: String,
+    var isSongArchived:Boolean){
 }

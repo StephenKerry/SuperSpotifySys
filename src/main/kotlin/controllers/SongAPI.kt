@@ -4,31 +4,34 @@ import models.Song
 
 
 class SongAPI {
-    private var song = ArrayList<Song>()
+    private var songs = ArrayList<Song>()
     fun add(newSong: Song): Boolean {
-        return song.add(newSong)
+        return songs.add(newSong)
     }
     fun listAllsongs(): String {
-        return if (song.isEmpty()) {
+        return if (songs.isEmpty()) {
             "No songs stored"
         } else {
             var listOfSongs = ""
-            for (i in song.indices) {
-                listOfSongs += "${i}: ${song[i]} \n"
+            for (i in songs.indices) {
+                listOfSongs += "${i}: ${songs[i]} \n"
             }
             listOfSongs
         }
     }
+    fun numberOfSongs(): Int {
+        return songs.size
 }
-fun numberOfSongs(): Int {
-    return Song.size
-}
+
+fun findOne(songTitle: String?): Song? {
+    return songs.find { song -> songTitle.equals(songTitle) }}
+
+    fun deleteSong(songTitle: String): Boolean {
+        return songs.removeIf { song -> song.songTitle == songTitle }
+    }
 
 
 
 
 
-//utility method to determine if an index is valid in a list.
-fun isValidListTitle(Title: String, list: List<Any>): Boolean {
-    return (Title >= 0 && Title < list.size)
-}
+
