@@ -44,17 +44,30 @@ fun mainMenu(): Int {
         } while (true)
     }
 
+fun seeStephenSong() {
+    println("You chose to see Stephen's top 5 favorite songs")
+    println("""
+        1. Bahamas Promises - Drake - https://open.spotify.com/track/3JZjcKImHcmOI9ylL4zrSc?si=nKh-iIC7T2i2No3hrOuJEQ
+        2. Last Last - Burna Boy - https://open.spotify.com/track/5YbPxJwPfrj7uswNwoF1pJ?si=Lx6ab5urSkeP8M15BmkP3A
+        3. 14 - Baby Santana - https://open.spotify.com/track/4tOypmWdWF0VAjcKfrtpFk?si=5l87NFuFQ1OQwChkGZHOqg
+        4. Starlight - Dave - https://open.spotify.com/track/531KGXtBroSrOX9LVmiIgc?si=Nk4pU3TOTR2eGdEI_DfLHw
+        5. Soundgasm - Rema - https://open.spotify.com/track/2psl5iNJCrmmm2XtS7LZqb?si=shY7ajISRYaR55rNxy9jCw
+    """.trimIndent())
+}
+
 fun deleteSong() {
     println("You chose Delete a song")
     //logger.info { "deleteSong() function invoked" }
     SongAPI.listAllsongs()
     if (SongAPI.numberOfSongs() > 0) {
-        //only ask the user to choose the note to delete if notes exist
-        val indexToDelete = readNextInt("Enter the index of the song to delete: ")
-        //pass the index of the note to NoteAPI for deleting and check for success.
-        val songToDelete = SongAPI.deleteSong(indexToDelete)
+        ("Enter the Title of the Song to delete: ")
+        val titleToDelete = readLine()
+        if (titleToDelete != null) {
+            val songToDelete = SongAPI.findOne(titleToDelete) // Find the song by title
         if (songToDelete != null) {
-            println("Song has been deleted successfully! Deleted song: ${songToDelete.songTitle}")
+            SongAPI.deleteSong(titleToDelete)
+        }
+            println("Song has been deleted successfully!")
         } else {
             println("Delete was NOT Successful")
         }
@@ -92,10 +105,10 @@ fun updateSong() {
 
 
                 songToUpdate.songTitle = songTitle
-                songToUpdate.viewCount = songViewCount
-                songToUpdate.genre = songGenre
+                songToUpdate.songViewCount = songViewCount
+                songToUpdate.songGenre= songGenre
                 songToUpdate.yearOfRelease = yearOfRelease
-                songToUpdate.artist = songArtist
+                songToUpdate.songArtist = songArtist
 
             } else {
             println("There are no songs with this title")
@@ -129,16 +142,6 @@ fun listSong() {
     println(SongAPI.listAllsongs())
 }
 
-fun seeStephenSong() {
-    println("You chose to see Stephen's top 5 favorite songs")
-    println("""
-        1. Bahamas Promises - Drake - https://open.spotify.com/track/3JZjcKImHcmOI9ylL4zrSc?si=nKh-iIC7T2i2No3hrOuJEQ
-        2. Last Last - Burna Boy - https://open.spotify.com/track/5YbPxJwPfrj7uswNwoF1pJ?si=Lx6ab5urSkeP8M15BmkP3A
-        3. 14 - Baby Santana - https://open.spotify.com/track/4tOypmWdWF0VAjcKfrtpFk?si=5l87NFuFQ1OQwChkGZHOqg
-        4. Starlight - Dave - https://open.spotify.com/track/531KGXtBroSrOX9LVmiIgc?si=Nk4pU3TOTR2eGdEI_DfLHw
-        5. Soundgasm - Rema - https://open.spotify.com/track/2psl5iNJCrmmm2XtS7LZqb?si=shY7ajISRYaR55rNxy9jCw
-    """.trimIndent())
-}
 
 
 fun searchSong() {
