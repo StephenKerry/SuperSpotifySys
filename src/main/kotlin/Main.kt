@@ -94,7 +94,7 @@ fun seeStephenSong() {
 
 fun deleteSong() {
     println("You chose Delete a song")
-    //logger.info { "deleteSong() function invoked" }
+    //Message for ehn a user chooses the dele song method
     SongAPI.listAllsongs()
     if (SongAPI.numberOfSongs() > 0) {
         print("Enter the Title of the Song to delete: ")
