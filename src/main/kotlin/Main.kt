@@ -44,6 +44,43 @@ fun mainMenu(): Int {
         } while (true)
     }
 
+fun getSongByTitle(): Song? {
+    print("Enter the song title to search by: ")
+    val songTitle = readLine()
+    return SongAPI.findOne(songTitle)
+}
+
+fun searchSong() {
+    println("You chose Song search")
+    val searchedSong = getSongByTitle()
+    if (searchedSong == null) {
+        println("No Song found")
+    } else {
+        println("Song found!: $searchedSong")
+    }
+}
+
+fun addSong() {
+    print("Please a title for your Song: ")
+    val songTitle = readLine().toString()
+    print("Enter the view/Stream Count for this song: ")
+    val songViewCount = readLine()?.toInt()
+    print("Enter a Genre for the Song: ")
+    val songGenre = readLine().toString()
+    print("Enter a year of Release for the Song: ")
+    val yearOfRelease = readLine()?.toInt()
+    print("Who is the Artist for this song?")
+    val songArtist = readLine().toString()
+
+    val isAdded = SongAPI.add(Song(songTitle, songViewCount, songGenre, yearOfRelease, songArtist, false))
+
+    if (isAdded) {
+        println("Added Successfully")
+    } else {
+        println("Add Failed")
+    }
+}
+
 fun seeStephenSong() {
     println("You chose to see Stephen's top 5 favorite songs")
     println("""
@@ -60,7 +97,7 @@ fun deleteSong() {
     //logger.info { "deleteSong() function invoked" }
     SongAPI.listAllsongs()
     if (SongAPI.numberOfSongs() > 0) {
-        ("Enter the Title of the Song to delete: ")
+        print("Enter the Title of the Song to delete: ")
         val titleToDelete = readLine()
         if (titleToDelete != null) {
             val songToDelete = SongAPI.findOne(titleToDelete) // Find the song by title
@@ -84,7 +121,7 @@ fun updateSong() {
     //logger.info { "updateSong() function invoked" }
      SongAPI.listAllsongs()
     if (SongAPI.numberOfSongs() > 0) {
-        ("Enter the Title of the Song to update: ")
+        print("Enter the Title of the Song to update: ")
         val titleToUpdate = readLine()
         if (titleToUpdate != null) {
             val songToUpdate = SongAPI.findOne(titleToUpdate) // Find the song by title
@@ -116,26 +153,7 @@ fun updateSong() {
     }
 }
 
-fun addSong() {
-    print("Please a title for your Song: ")
-    val songTitle = readLine().toString()
-    ("Enter the view/Stream Count for this song: ")
-    val songViewCount = readLine()?.toInt()
-    ("Enter a Genre for the Song: ")
-    val songGenre = readLine().toString()
-    ("Enter a year of Release for the Song: ")
-    val yearOfRelease = readLine()?.toInt()
-    print("Who is the Artist for this song?")
-    val songArtist = readLine().toString()
 
-    val isAdded = SongAPI.add(Song(songTitle, songViewCount, songGenre, yearOfRelease, songArtist, false))
-
-    if (isAdded) {
-        println("Added Successfully")
-    } else {
-        println("Add Failed")
-    }
-}
 
 
 fun listSong() {
@@ -144,19 +162,9 @@ fun listSong() {
 
 
 
-fun searchSong() {
-    fun getSongbyTitle(): Song? {
-        print("Enter the song title to search by: ")
-        val songTitle =  readLine()
-        return SongAPI.findOne(songTitle)
 }
-    println("You chose Song search")
-    val searchedSong = getSongbyTitle()
-    if (searchedSong == null)
-        println("No Song found")
-else { println("Song found!: $searchedSong")
 
-}
+
 
 
 
