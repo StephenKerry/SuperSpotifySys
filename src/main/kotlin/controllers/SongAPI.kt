@@ -28,7 +28,7 @@ fun findOne(songTitle: String?): Song? {
 
     fun deleteSong(songTitle: String): Boolean {
         return songs.removeIf { song -> song.songTitle == songTitle }
-    }
+    }}
 
 
 

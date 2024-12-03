@@ -52,12 +52,14 @@ fun getSongByTitle(): Song? {
 
 fun searchSong() {
     println("You chose Song search")
+
     val searchedSong = getSongByTitle()
     if (searchedSong == null) {
         println("No Song found")
     } else {
         println("Song found!: $searchedSong")
     }
+
 }
 
 fun addSong() {
