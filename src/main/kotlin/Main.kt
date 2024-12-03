@@ -3,9 +3,11 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 import models.Song
 import java.lang.System.exit
 import utils.readNextInt
+import persistence.JSONSerializer
+import java.io.File
 
 private val logger = KotlinLogging.logger {}
-private val SongAPI = SongAPI()
+private val SongAPI = SongAPI(JSONSerializer(File("songs.json")))
 
 fun main() {
     runMenu()
@@ -38,6 +40,8 @@ fun mainMenu(): Int {
                 3 -> searchSong()
                 4 -> updateSong()
                 5 -> deleteSong()
+                6 -> saveSongs()
+                7 -> loadSongs()
                 0 -> exitApp()
                 else -> println("Invalid option entered: $option")
             }

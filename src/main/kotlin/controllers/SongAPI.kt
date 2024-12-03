@@ -1,9 +1,11 @@
 package controllers
 
 import models.Song
+import persistence.Serializer
 
 
-class SongAPI {
+class SongAPI (serializerType: Serializer){
+    private var serializer: Serializer = serializerType
     private var songs = ArrayList<Song>()
     fun add(newSong: Song): Boolean {
         return songs.add(newSong)
