@@ -40,13 +40,28 @@ fun mainMenu(): Int {
                 3 -> searchSong()
                 4 -> updateSong()
                 5 -> deleteSong()
-                6 -> saveSongs()
-                7 -> loadSongs()
+                6 -> save()
+                7 -> load()
                 0 -> exitApp()
                 else -> println("Invalid option entered: $option")
             }
         } while (true)
     }
+
+fun save() {  try {
+    SongAPI.store()
+} catch (e: Exception) {
+    System.err.println("Error writing to file: $e")
+}
+}
+
+fun load() {
+    try {
+        SongAPI.load()
+    } catch (e: Exception) {
+        System.err.println("Error reading from file: $e")
+    }
+}
 
 fun getSongByTitle(): Song? {
     print("Enter the song title to search by: ")
@@ -165,6 +180,7 @@ fun updateSong() {
 fun listSong() {
     println(SongAPI.listAllsongs())
 }
+
 
 
 

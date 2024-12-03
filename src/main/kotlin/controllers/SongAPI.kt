@@ -30,7 +30,16 @@ fun findOne(songTitle: String?): Song? {
 
     fun deleteSong(songTitle: String): Boolean {
         return songs.removeIf { song -> song.songTitle == songTitle }
+    }
+    @Throws(Exception::class)
+    fun store() {
+        serializer.write(songs)
+    }
+    @Throws(Exception::class)
+    fun load() {
+        songs = serializer.read() as ArrayList<Song>
     }}
+
 
 
 
