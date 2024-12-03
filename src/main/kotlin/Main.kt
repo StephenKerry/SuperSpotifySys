@@ -73,6 +73,7 @@ fun getSongByTitle(): Song? {
 
 fun searchSong() {
     println("Searching a song chosen")
+    logger.info { "searchSong() function invoked" }
 
     val searchedSong = getSongByTitle()
     if (searchedSong == null) {
@@ -84,6 +85,7 @@ fun searchSong() {
 }
 
 fun addSong() {
+    logger.info { "addSong() function invoked" }
     print("Please a title for your Song: ")
     val songTitle = readLine().toString()
     print("Enter the view/Stream Count for this song: ")
@@ -117,6 +119,7 @@ fun seeStephenSong() {
 
 fun deleteSong() {
     println("You chos Deleting a song")
+    logger.info { "deleteSong() function invoked" }
     //Message for ehn a user chooses the dele song method
     SongAPI.listAllsongs()
     if (SongAPI.numberOfSongs() > 0) {
@@ -142,6 +145,7 @@ fun exitApp() {
 fun updateSong() {
     println("Updating a song")
     //logger.info { "updateSong() function invoked" }
+    logger.info { "updateSong() function invoked" }
      SongAPI.listAllsongs()
     if (SongAPI.numberOfSongs() > 0) {
         print("Enter the Title of the Song to update: ")
