@@ -5,6 +5,5 @@ data class Song(
     var songViewCount: Int?,
     var songGenre: String,
     var yearOfRelease: Int?,
-    var songArtist: String,
-    var isSongArchived:Boolean){
+    var songArtist: String){
 }

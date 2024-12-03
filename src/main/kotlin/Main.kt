@@ -72,7 +72,7 @@ fun getSongByTitle(): Song? {
 }
 
 fun searchSong() {
-    println("You chose Song search")
+    println("Searching a song chosen")
 
     val searchedSong = getSongByTitle()
     if (searchedSong == null) {
@@ -95,7 +95,7 @@ fun addSong() {
     print("Who is the Artist for this song?")
     val songArtist = readLine().toString()
 
-    val isAdded = SongAPI.add(Song(songTitle, songViewCount, songGenre, yearOfRelease, songArtist, false))
+    val isAdded = SongAPI.add(Song(songTitle, songViewCount, songGenre, yearOfRelease, songArtist))
 
     if (isAdded) {
         println("Added Successfully")
@@ -105,7 +105,7 @@ fun addSong() {
 }
 
 fun seeStephenSong() {
-    println("You chose to see Stephen's top 5 favorite songs")
+    println("Here are Stephens top 5 songs")
     println("""
         1. Bahamas Promises - Drake - https://open.spotify.com/track/3JZjcKImHcmOI9ylL4zrSc?si=nKh-iIC7T2i2No3hrOuJEQ
         2. Last Last - Burna Boy - https://open.spotify.com/track/5YbPxJwPfrj7uswNwoF1pJ?si=Lx6ab5urSkeP8M15BmkP3A
@@ -116,7 +116,7 @@ fun seeStephenSong() {
 }
 
 fun deleteSong() {
-    println("You chose Delete a song")
+    println("You chos Deleting a song")
     //Message for ehn a user chooses the dele song method
     SongAPI.listAllsongs()
     if (SongAPI.numberOfSongs() > 0) {
@@ -140,7 +140,7 @@ fun exitApp() {
 }
 
 fun updateSong() {
-    println("You chose Update a song")
+    println("Updating a song")
     //logger.info { "updateSong() function invoked" }
      SongAPI.listAllsongs()
     if (SongAPI.numberOfSongs() > 0) {
