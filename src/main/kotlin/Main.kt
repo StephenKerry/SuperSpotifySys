@@ -24,7 +24,9 @@ fun mainMenu(): Int {
          > |  *2) Add a song to the system >
          > |  *3) Search a song and its stats >
          > |  *4) Update Song Details >
-         > |   *5) Delete a Song  >
+         > |  *5) Delete a Song  >
+         > |  *6) Save Songs  >
+         > |  *7) Load Songs  >
          > 
          > ----------------------------------
          > |   *0) Exit                      |
