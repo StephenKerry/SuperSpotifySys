@@ -3,13 +3,10 @@ package controllers
 import models.Song
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import persistence.JSONSerializer
 import persistence.XMLSerializer
 import java.io.File
 
@@ -26,7 +23,7 @@ class SongAPITest {
         RapSong = Song("In da Club", 30200000, "Rap",2003, "50 Cent" )
 
 
-        // adding 5 Note to the notes api
+        // adding 5 Songs to the songs api
         populatedSongs!!.add(PopSong!!)
         populatedSongs!!.add(RapSong!!)
 

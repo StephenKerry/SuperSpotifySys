@@ -7,6 +7,12 @@ import persistence.Serializer
 class SongAPI (serializerType: Serializer){
     private var serializer: Serializer = serializerType
     private var songs = ArrayList<Song>()
+    /**
+     * Adds a new [Song] to the list.
+     *
+     * @param newSong The [Song] to be added.
+     *
+     */
     fun add(newSong: Song): Boolean {
         return songs.add(newSong)
     }
