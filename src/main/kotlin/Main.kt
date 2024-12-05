@@ -12,7 +12,7 @@ private val SongAPI = SongAPI(JSONSerializer(File("songs.json")))
 fun main() {
     runMenu()
 }
-fun mainMenu(): Int {
+fun mainMenu(): Int {// Menu Design from notes app
     println("Welcome to the App")
 
     print(""" 
@@ -50,14 +50,14 @@ fun mainMenu(): Int {
         } while (true)
     }
 
-fun save() {  try {
+fun save() {  try { // derived from notes app
     SongAPI.store()
 } catch (e: Exception) {
     System.err.println("Error writing to file: $e")
 }
 }
 
-fun load() {
+fun load() { // derived from notes app
     try {
         SongAPI.load()
     } catch (e: Exception) {
@@ -65,31 +65,32 @@ fun load() {
     }
 }
 
-fun getSongByTitle(): Song? {
+fun getSongByTitle(): Song? { // for this method i drew inspiration from internal fun getEmployeeById() in the employee app
+                             //
     print("Enter the song title to search by: ")
-    val songTitle = readLine()
-    return SongAPI.findOne(songTitle)
+    val songTitle = readLine() // I created a non changable value because I needed to get the users input from this line to ask for their song title
+    return SongAPI.findOne(songTitle) // I then used the method in song api and passed the earlier value that i got from the line b4 in
 }
 
 fun searchSong() {
     println("Searching a song chosen")
     logger.info { "searchSong() function invoked" }
 
-    val searchedSong = getSongByTitle()
+    val searchedSong = getSongByTitle() //getSongByTitle() should have akready been made as an internakl function but its already done
     if (searchedSong == null) {
-        println("No Song found")
+        println("No Song found")// if thge user types in a song that is NOT in the system, it should return this method
     } else {
-        println("Song found!: $searchedSong")
+        println("Song found!: $searchedSong")// if uit is found it should return this
     }
 
 }
 
-fun addSong() {
+fun addSong() {// this method derives from the add() method in the employee app
     logger.info { "addSong() function invoked" }
     print("Please a title for your Song: ")
     val songTitle = readLine().toString()
     print("Enter the view/Stream Count for this song: ")
-    val songViewCount = readLine()?.toInt()
+    val songViewCount = readLine()?.toInt()// we are creating values and asking users for their input and converting the returned string to whichever datatype they are in the model songs
     print("Enter a Genre for the Song: ")
     val songGenre = readLine().toString()
     print("Enter a year of Release for the Song: ")
@@ -98,6 +99,8 @@ fun addSong() {
     val songArtist = readLine().toString()
 
     val isAdded = SongAPI.add(Song(songTitle, songViewCount, songGenre, yearOfRelease, songArtist))
+    // this line is creating a new Song object by passing the users entered values with the help of the adding method in the SongAPI class
+    // This then is stored as a value called isAdded
 
     if (isAdded) {
         println("Added Successfully")
@@ -106,7 +109,7 @@ fun addSong() {
     }
 }
 
-fun seeStephenSong() {
+fun seeStephenSong() { // A little method I made myself that simply prints my top 5 songs and gives links to their spotify page
     println("Here are Stephens top 5 songs")
     println("""
         1. Bahamas Promises - Drake - https://open.spotify.com/track/3JZjcKImHcmOI9ylL4zrSc?si=nKh-iIC7T2i2No3hrOuJEQ
@@ -121,7 +124,7 @@ fun deleteSong() {
     println("You chos Deleting a song")
     logger.info { "deleteSong() function invoked" }
     //Message for ehn a user chooses the dele song method
-    SongAPI.listAllsongs()
+    println(SongAPI.listAllsongs())
     if (SongAPI.numberOfSongs() > 0) {
         print("Enter the Title of the Song to delete: ")
         val titleToDelete = readLine()
@@ -139,7 +142,7 @@ fun deleteSong() {
 
 fun exitApp() {
     println("System shutting down...")
-    exit(0)
+    exit(0) // derived from notes app
 }
 
 fun updateSong() {
