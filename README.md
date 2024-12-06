@@ -22,7 +22,7 @@ This feature is accessed by the user by pressing 4. If the user made a mistake w
 This feature is accessed by the user by pressing 5. If a user would not like a song anymore in their system, They can simply delete it with this feature
 
 ### Save your songs in the System
-This feature is accessed by the user by pressing 6. This saves the songs by adding the array to an xml file
+This feature is accessed by the user by pressing 6. This saves the songs with json
 
  ### Load your songs in the System
 This feature is accessed by the user by pressing 7. These load past songs to the current system
