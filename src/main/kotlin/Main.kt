@@ -52,7 +52,10 @@ fun mainMenu(): Int {// Menu Design from notes app
             }
         } while (true)
     }
+/**
 
+ * The menu gives options to the user to draw either a trumpet a piano or a guitar The user will pick and then the art is shown,this art is from ASCII.com.
+ */
 
 fun drawInstrument() {
     do {
