@@ -17,17 +17,19 @@ fun mainMenu(): Int {// Menu Design from notes app
 
     print(""" 
          > ----------------------------------
-         > |**Stephen's Super Spotify App**  |
+         > |/Stephen's Super Spotify App\|
          > ----------------------------------
-         > | MAIN MENU                      |
+         > | MAIN MENU  
+         > //////////////////////////////////
          > |  *1) See Stephen's top 5 songs >
          > |  *2) Add a song to the system >
          > |  *3) Search a song and its stats >
          > |  *4) Update Song Details >
          > |  *5) Delete a Song  >
          > |  *6) Save Songs  >
-         > |  *7) Load Songs  >
-         > 
+         > |  *7) Load Songs  > 
+         > \  *8) draw an Instument
+         > ///////////////////////////////////
          > ----------------------------------
          > |   *0) Exit                      |
          > ---------------------------------- 
@@ -44,11 +46,80 @@ fun mainMenu(): Int {// Menu Design from notes app
                 5 -> deleteSong()
                 6 -> save()
                 7 -> load()
+                8 -> drawInstrument()
                 0 -> exitApp()
                 else -> println("Invalid option entered: $option")
             }
         } while (true)
     }
+
+
+ fun drawInstrument() {
+     do {
+         val option = mainMenu()
+         when (option) {
+             1 -> drawTrumpet()
+             2 -> drawGuitar()
+             3 -> drawPiano()
+             else -> println("Invalid option entered: $option")
+         }
+     } while (true)
+ }
+
+
+
+fun drawPiano() {
+
+        println(
+            """
+|| | | ||| | ||| | | ||| | ||| | | ||| | ||| | | ||| | ||| | | ||| | ||| | | ||
+||_|_|_|||_|_|||_|_|_|||_|_|||_|_|_|||_|_|||_|_|_|||_|_|||_|_|_||
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+        """.trimIndent()
+        )
+    }
+
+
+
+fun drawGuitar() {
+
+        println(
+            """
+                      ,     
+                      ,   |     
+   _,,._              |  0'     
+ ,'     `.__,--.     0'         
+/   .--.        |           ,,, 
+| [=========|==|==|=|==|=|==___]
+\   "--"  __    |           ''' 
+ `._   _,'  `--'                
+    ""'     ,   ,0     ,        
+hjm         |)  |)   ,'|        
+  ____     0'   '   | 0'        
+  |  |             0'           
+ 0' 0'               
+        """.trimIndent()
+        )
+    }
+
+
+
+
+fun drawTrumpet() {
+        println(
+            """/|
+=  =  =      / |
+____| || || |____/  | -_-_-_-_-_-_
+|)----| || || |____   |     AH
+((  | || || |  ))\  | _-_-_-_-_-_-
+\\_|_||_||_|_//  \ |
+\___________/    \|
+"""
+        )
+    }
+
+
 
 fun save() {  try { // derived from notes app
     SongAPI.store()
@@ -171,7 +242,7 @@ fun updateSong() {
 
 
 
-                songToUpdate.songTitle = songTitle
+                songToUpdate.songTitle = songTitle // This section the new values are getting passed in
                 songToUpdate.songViewCount = songViewCount
                 songToUpdate.songGenre= songGenre
                 songToUpdate.yearOfRelease = yearOfRelease
@@ -189,6 +260,7 @@ fun updateSong() {
 fun listSong() {
     println(SongAPI.listAllsongs())
 }
+
 
 
 
