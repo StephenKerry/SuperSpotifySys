@@ -54,17 +54,30 @@ fun mainMenu(): Int {// Menu Design from notes app
     }
 
 
- fun drawInstrument() {
-     do {
-         val option = mainMenu()
-         when (option) {
-             1 -> drawTrumpet()
-             2 -> drawGuitar()
-             3 -> drawPiano()
-             else -> println("Invalid option entered: $option")
-         }
-     } while (true)
- }
+fun drawInstrument() {
+    do {
+        println(
+            """
+            > ----------------------------------
+            > | -- DRAW INSTRUMENT MENU -----     |
+            > ----------------------------------
+            > [  1) Draw a Trumpet               ]
+            > [  2) Draw a Guitar                ]
+            > [ 3) Draw a Piano                 ]
+            > [  0) Return to  the Main Menu        ]
+            > ----------------------------------
+            """.trimMargin(">")
+        )
+        val option = readNextInt(" > ==>>")
+        when (option) {
+            1 -> drawTrumpet()
+            2 -> drawGuitar()
+            3 -> drawPiano()
+            0 -> return // Exit back to the main menu
+            else -> println("Invalid option entered: $option")
+        }
+    } while (true)
+}
 
 
 
