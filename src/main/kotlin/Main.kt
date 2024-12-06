@@ -76,7 +76,7 @@ fun drawInstrument() {
             1 -> drawTrumpet()
             2 -> drawGuitar()
             3 -> drawPiano()
-            0 -> return // Exit back to the main menu
+            0 -> return
             else -> println("Invalid option entered: $option")
         }
     } while (true)
