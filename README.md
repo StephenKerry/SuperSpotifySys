@@ -20,3 +20,12 @@ This feature is accessed by the user by pressing 4. If the user made a mistake w
 
 ### Delete a Song in the system 
 This feature is accessed by the user by pressing 5. If a user would not like a song anymore in their system, They can simply delete it with this feature
+
+### Save your songs in the System
+This feature is accessed by the user by pressing 6. This saves the songs by adding the array to an xml file
+
+ ### Load your songs in the System
+This feature is accessed by the user by pressing 7. These load past songs to the current system
+
+ ### Draw an Instrument
+This feature is accessed by the user by pressing 8. The user is then taken to a sub menu where they choose between three instrument the for the system to draw to them
